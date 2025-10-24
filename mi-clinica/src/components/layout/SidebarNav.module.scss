@@ -1,0 +1,127 @@
+@use '../../styles/tokens';
+@use '../../styles/animations';
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2.5rem 1.75rem 3rem;
+  background: linear-gradient(180deg, #1f3bb3 0%, #273572 100%);
+  color: tokens.color('surface-contrast', tokens.$semantic-colors);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding-inline: 0.5rem;
+}
+
+.brandMark {
+  width: 42px;
+  height: 42px;
+}
+
+.brandLogo {
+  height: 24px;
+}
+
+.navigation {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.groupLabel {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.75rem;
+  opacity: 0.72;
+}
+
+.linkList {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  list-style: none;
+}
+
+.linkItem {
+  margin: 0;
+}
+
+.link {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.75rem 0.85rem;
+  border-radius: 0.85rem;
+  @include tokens.font(body);
+  color: inherit;
+  background: rgba(255, 255, 255, 0.04);
+  transition: background animations.duration(fast) ease, transform animations.duration(fast) ease,
+    box-shadow animations.duration(fast) ease;
+}
+
+.link:hover,
+.link:focus-visible {
+  background: rgba(255, 255, 255, 0.16);
+  transform: translateX(4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+  text-decoration: none;
+}
+
+.linkText {
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.linkDescription {
+  opacity: 0.7;
+  font-size: 0.75rem;
+  line-height: 1.1rem;
+}
+
+@media (max-width: 960px) {
+  .sidebar {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    padding: 1.5rem 1.25rem;
+  }
+
+  .navigation {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .group {
+    min-width: 180px;
+  }
+
+  .link {
+    padding: 0.65rem 0.75rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .sidebar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .navigation {
+    width: 100%;
+  }
+}

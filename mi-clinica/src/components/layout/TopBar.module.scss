@@ -1,0 +1,107 @@
+@use '../../styles/tokens';
+@use '../../styles/animations';
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 1.75rem 3rem 1.5rem;
+  border-bottom: 1px solid tokens.color('border', tokens.$semantic-colors);
+}
+
+.welcomeCopy {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.greeting {
+  margin: 0;
+  @include tokens.font(h3, heading, 600, heading);
+}
+
+.greetingLabel {
+  opacity: 0.8;
+}
+
+.greetingName {
+  color: tokens.color('surface-contrast', tokens.$semantic-colors);
+  background: tokens.color(primary);
+  padding: 0.2rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.9em;
+}
+
+.subtitle {
+  margin: 0;
+  @include tokens.font(body);
+  @include tokens.text-color('text-muted', tokens.$semantic-colors);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.primaryAction,
+.secondaryAction {
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  padding: 0.75rem 1.6rem;
+  @include tokens.font(button, heading, 600, tight);
+  transition: transform animations.duration(fast) ease, box-shadow animations.duration(fast) ease,
+    background animations.duration(fast) ease;
+}
+
+.secondaryAction {
+  background: rgba(31, 59, 179, 0.08);
+  color: tokens.color(primary);
+}
+
+.secondaryAction:hover,
+.secondaryAction:focus-visible {
+  background: rgba(31, 59, 179, 0.16);
+  transform: translateY(-2px);
+}
+
+.primaryAction {
+  @include tokens.text-color('surface-contrast', tokens.$semantic-colors);
+  background: linear-gradient(135deg, tokens.color(primary) 0%, tokens.color(secondary) 100%);
+  box-shadow: 0 16px 32px -18px rgba(31, 59, 179, 0.65);
+}
+
+.primaryAction:hover,
+.primaryAction:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 38px -20px rgba(31, 59, 179, 0.75);
+}
+
+@media (max-width: 960px) {
+  .topbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.5rem 2rem 1.25rem;
+  }
+
+  .actions {
+    width: 100%;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 640px) {
+  .topbar {
+    padding-inline: 1.5rem;
+  }
+
+  .primaryAction,
+  .secondaryAction {
+    width: 100%;
+    justify-content: center;
+  }
+}

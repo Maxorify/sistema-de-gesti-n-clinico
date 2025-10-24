@@ -1,0 +1,27 @@
+@use '../../styles/tokens';
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  @include tokens.font(body);
+  @include tokens.text-color('text-muted', tokens.$semantic-colors);
+}
+
+.copy {
+  margin: 0;
+  font-weight: 600;
+  @include tokens.text-color('text-default', tokens.$semantic-colors);
+}
+
+.meta {
+  margin: 0;
+  max-width: 36rem;
+  line-height: tokens.line-height(relaxed);
+}
+
+@media (max-width: 640px) {
+  .footer {
+    gap: 0.5rem;
+  }
+}
