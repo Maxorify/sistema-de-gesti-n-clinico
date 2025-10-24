@@ -1,0 +1,98 @@
+@use 'sass:map';
+@use './tokens';
+
+$animation-durations: (
+  fast: 0.15s,
+  action: 0.3s,
+  slow: 0.6s,
+  loop: 3s
+);
+
+@function duration($token: action) {
+  @return tokens.get-token($animation-durations, $token, 'animation duration');
+}
+
+@keyframes dropdown-animation {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -30px, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 100%, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/// Generic animation helper.
+/// @param {String} $name - Animation name.
+/// @param {String} $duration-token - Duration token key.
+/// @param {String} $timing - Timing function.
+/// @param {String} $fill-mode - Fill mode.
+/// @param {String|Number} $iteration-count - Iteration count.
+@mixin use-animation(
+  $name,
+  $duration-token: action,
+  $timing: ease,
+  $fill-mode: both,
+  $iteration-count: 1
+) {
+  animation-name: $name;
+  animation-duration: duration($duration-token);
+  animation-timing-function: $timing;
+  animation-fill-mode: $fill-mode;
+  animation-iteration-count: $iteration-count;
+}
+
+/// Applies the dropdown entrance animation.
+@mixin dropdown($duration-token: action) {
+  @include use-animation(dropdown-animation, $duration-token, ease-out);
+}
+
+/// Applies the fade-out animation.
+@mixin fade-out($duration-token: action) {
+  @include use-animation(fade-out, $duration-token);
+}
+
+/// Applies the fade-in-up animation.
+@mixin fade-in-up($duration-token: action) {
+  @include use-animation(fade-in-up, $duration-token);
+}
+
+/// Applies an infinite spin animation, ideal for loaders or hover states.
+@mixin infinite-spin($duration-token: loop) {
+  @include use-animation(spin, $duration-token, linear, both, infinite);
+}
+
