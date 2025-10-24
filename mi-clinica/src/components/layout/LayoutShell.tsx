@@ -1,12 +1,8 @@
-import type { ReactNode } from 'react'
+import { Outlet } from 'react-router-dom'
 import { SidebarNav } from './SidebarNav'
 import { TopBar } from './TopBar'
 import { Footer } from './Footer'
 import styles from './LayoutShell.module.scss'
-
-export interface LayoutShellProps {
-  children: ReactNode
-}
 
 const defaultUser = {
   name: 'Dra. Valeria Rivas',
@@ -14,7 +10,7 @@ const defaultUser = {
   subtitle: 'Resumen de tu actividad clínica de la semana',
 }
 
-export function LayoutShell({ children }: LayoutShellProps) {
+export function LayoutShell() {
   return (
     <div className={styles.layout}>
       <SidebarNav className={styles.sidebar} />
@@ -26,7 +22,7 @@ export function LayoutShell({ children }: LayoutShellProps) {
           subtitle={defaultUser.subtitle}
         />
         <main className={styles.mainContent} role="main">
-          {children}
+          <Outlet />
         </main>
         <Footer className={styles.footer} />
       </div>
