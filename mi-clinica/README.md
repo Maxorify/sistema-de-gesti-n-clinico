@@ -1,73 +1,31 @@
-# React + TypeScript + Vite
+# Mi Clínica (React + Vite)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+`mi-clinica` es la implementación oficial y única fuente de verdad del sistema de gestión clínico. El objetivo es reemplazar la versión estática heredada incorporando componentes reutilizables, rutas protegidas y flujos accesibles.
 
-Currently, two official plugins are available:
+## Requisitos
+- Node.js 20+
+- pnpm, npm o yarn (cualquiera de los gestores soportados por Vite)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Scripts principales
+```bash
+npm install      # instala dependencias
+npm run dev      # levanta el servidor de desarrollo en http://localhost:5173
+npm run build    # genera el build de producción
+npm run preview  # sirve el build generado
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Estructura relevante
 ```
+src/
+  main.tsx        # punto de entrada de React
+  App.tsx         # composición de rutas y layout principal
+  assets/         # recursos compartidos (iconos, imágenes, etc.)
+```
+
+## Relación con el legado
+- Todos los flujos en React deben mapearse a los hitos definidos en [`../docs/transicion-react.md`](../docs/transicion-react.md).
+- Cualquier cambio detectado entre esta app y el material estático debe resolverse actualizando `mi-clinica`.
+- QA y documentación viva se gestionan exclusivamente desde esta base de código.
+
+## Próximos pasos
+Consulta el plan de transición para conocer fechas, responsables y decisiones sobre activos heredados.
