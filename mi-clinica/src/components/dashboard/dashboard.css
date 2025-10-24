@@ -3,9 +3,7 @@
 }
 
 .dashboard {
-  min-height: 100vh;
-  background: linear-gradient(180deg, #eef2ff 0%, #f8fafc 100%);
-  padding: 2rem;
+  width: 100%;
 }
 
 .dashboard__content {
