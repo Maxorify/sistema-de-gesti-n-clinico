@@ -1,4 +1,4 @@
-import { Navigate, Outlet, Route, Routes } from 'react-router-dom'
+import { Navigate, Route, Routes } from 'react-router-dom'
 import { DashboardPage } from './components/dashboard/DashboardPage'
 import { LayoutShell } from './components/layout/LayoutShell'
 
@@ -14,7 +14,7 @@ function NotFoundPage() {
 export function AppRoutes() {
   return (
     <Routes>
-      <Route element={<LayoutShell><Outlet /></LayoutShell>}>
+      <Route path="/" element={<LayoutShell />}>
         <Route index element={<Navigate to="/dashboard" replace />} />
         <Route path="dashboard" element={<DashboardPage />} />
         <Route path="*" element={<NotFoundPage />} />
