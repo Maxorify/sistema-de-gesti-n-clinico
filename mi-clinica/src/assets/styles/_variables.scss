@@ -1,0 +1,31 @@
+@forward '../../styles/tokens';
+
+@use '../../styles/tokens' as tokens;
+
+$color-palette: tokens.$color-palette !default;
+$theme-colors: tokens.$theme-colors !default;
+$semantic-colors: tokens.$semantic-colors !default;
+$font-families: tokens.$font-families !default;
+$font-sizes: tokens.$font-sizes !default;
+$line-heights: tokens.$line-heights !default;
+
+$default-font-size: tokens.font-size(body) !default;
+$text-muted: tokens.color('text-muted', $semantic-colors) !default;
+$body-color: tokens.color('text-default', $semantic-colors) !default;
+$color-light-blue: tokens.color('highlight', $semantic-colors) !default;
+
+$footer-height: 75px !default;
+$footer-bg: tokens.color('content-bg', $semantic-colors) !default;
+$footer-color: tokens.color(dark, $theme-colors) !default;
+$dark-half-opacity: rgba(tokens.color(dark, $theme-colors), 0.5) !default;
+
+$btn-padding-y: 0.875rem !default;
+$btn-padding-x: 1.5rem !default;
+$btn-line-height: 1 !default;
+$btn-font-size: tokens.font-size(button) !default;
+$btn-border-radius: 0.3rem !default;
+
+$tooltip-font-size: 0.75rem !default;
+$tooltip-padding-y: 0.4rem !default;
+$tooltip-padding-x: 0.75rem !default;
+$tooltip-border-radius: 0.375rem !default;
