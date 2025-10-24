@@ -1,0 +1,136 @@
+@use './styles/tokens';
+@use './styles/animations';
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+  padding: 4rem 1.5rem;
+  text-align: center;
+  background: tokens.color('content-bg', tokens.$semantic-colors);
+  @include tokens.text-color('text-default', tokens.$semantic-colors);
+  @include tokens.font(body);
+}
+
+.hero {
+  max-width: 36rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.heroTitle {
+  margin: 0;
+  @include tokens.font(h2, heading, 600, heading);
+}
+
+.heroSubtitle {
+  margin: 0;
+  @include tokens.font(lead, body, 400);
+  @include tokens.text-color('text-muted', tokens.$semantic-colors);
+}
+
+.logoRow {
+  display: flex;
+  gap: 2.5rem;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  @include animations.fade-in-up();
+}
+
+.showcase {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logoLink {
+  display: inline-flex;
+  padding: 0.5rem;
+  border-radius: 1rem;
+  background: tokens.color('surface-contrast', tokens.$semantic-colors);
+  box-shadow: 0 20px 30px rgba(31, 59, 179, 0.12);
+  transition: transform animations.duration(fast) ease, box-shadow animations.duration(fast) ease;
+
+  &:hover,
+  &:focus-visible {
+    transform: translateY(-4px);
+    box-shadow: 0 24px 34px rgba(31, 59, 179, 0.18);
+  }
+}
+
+.logo {
+  height: 6rem;
+  width: 6rem;
+  display: block;
+
+  &:hover {
+    @include animations.infinite-spin();
+  }
+}
+
+.caption {
+  margin: 0;
+  max-width: 32rem;
+  @include tokens.font(body);
+  @include tokens.text-color('text-muted', tokens.$semantic-colors);
+}
+
+.counterCard {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+  padding: 2rem 2.5rem;
+  border-radius: 1.25rem;
+  background: tokens.color('surface-contrast', tokens.$semantic-colors);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.08);
+  border: 1px solid tokens.color('border', tokens.$semantic-colors);
+}
+
+.counterTitle {
+  margin: 0;
+  @include tokens.font(h4, heading, 600, heading);
+}
+
+.counterValue {
+  margin: 0;
+  @include tokens.font('display-4', heading, 600, display);
+  color: tokens.color(primary);
+}
+
+.ctaButton {
+  padding: 0.75rem 2.5rem;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  @include tokens.font(button, heading, 600, tight);
+  @include tokens.text-color('surface-contrast', tokens.$semantic-colors);
+  background: tokens.color(primary);
+  transition: transform animations.duration(fast) ease, box-shadow animations.duration(fast) ease;
+  box-shadow: 0 10px 25px rgba(31, 59, 179, 0.25);
+
+  &:hover,
+  &:focus-visible {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 28px rgba(31, 59, 179, 0.35);
+    background: tokens.color(secondary);
+  }
+}
+
+.docsLink {
+  @include tokens.font(body);
+  @include tokens.text-color(primary);
+  text-decoration: none;
+
+  &:hover,
+  &:focus-visible {
+    text-decoration: underline;
+  }
+}
+
