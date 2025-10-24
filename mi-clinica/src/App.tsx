@@ -1,11 +1,11 @@
-import { LayoutShell } from './components/layout/LayoutShell'
-import { DashboardPage } from './components/dashboard/DashboardPage'
+import { BrowserRouter } from 'react-router-dom'
+import { AppRoutes } from './AppRoutes'
 
 function App() {
   return (
-    <LayoutShell>
-      <DashboardPage />
-    </LayoutShell>
+    <BrowserRouter>
+      <AppRoutes />
+    </BrowserRouter>
   )
 }
 
