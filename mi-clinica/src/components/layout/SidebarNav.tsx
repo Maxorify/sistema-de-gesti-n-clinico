@@ -1,9 +1,8 @@
-import { NavLink } from 'react-router-dom'
 import brandLogo from '../../assets/brand-logo.svg'
 import brandMark from '../../assets/brand-mark.svg'
 import styles from './SidebarNav.module.scss'
 
-type SidebarLink = {
+type NavLink = {
   label: string
   to: string
   description?: string
@@ -12,7 +11,7 @@ type SidebarLink = {
 type NavGroup = {
   id: string
   label: string
-  links: SidebarLink[]
+  links: NavLink[]
 }
 
 const NAVIGATION: NavGroup[] = [
@@ -56,17 +55,6 @@ export interface SidebarNavProps {
   className?: string
 }
 
-function buildLinkClassName(isActive: boolean) {
-  const activeClassName = styles.linkActive ?? ''
-  const classes = [styles.link]
-
-  if (isActive && activeClassName) {
-    classes.push(activeClassName)
-  }
-
-  return classes.join(' ')
-}
-
 export function SidebarNav({ className }: SidebarNavProps) {
   const sidebarClassName = className ? `${styles.sidebar} ${className}` : styles.sidebar
 
@@ -83,16 +71,12 @@ export function SidebarNav({ className }: SidebarNavProps) {
             <ul className={styles.linkList}>
               {group.links.map((link) => (
                 <li key={link.label} className={styles.linkItem}>
-                  <NavLink
-                    to={link.to}
-                    className={({ isActive }) => buildLinkClassName(isActive)}
-                    end={link.to === '/dashboard'}
-                  >
+                  <a className={styles.link} href={link.to}>
                     <span className={styles.linkText}>{link.label}</span>
                     {link.description ? (
                       <span className={styles.linkDescription}>{link.description}</span>
                     ) : null}
-                  </NavLink>
+                  </a>
                 </li>
               ))}
             </ul>
